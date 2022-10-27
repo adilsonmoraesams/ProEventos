@@ -1,0 +1,16 @@
+{
+  "todo": [
+    {
+      "assignedTo": {
+        "name": "ADILSON-PC"
+      },
+      "creation_time": "2022-10-20T20:51:34.114Z",
+      "id": "1",
+      "references": [],
+      "title": "Começar o curso"
+    }
+  ],
+  "in-progress": [],
+  "testing": [],
+  "done": []
+}
