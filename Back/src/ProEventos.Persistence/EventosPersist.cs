@@ -16,11 +16,12 @@ namespace ProEventos.Persistence
 
         public EventosPersist(ProEventosContext context)
         {
-            this._context = context;
+            _context = context;
+            _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
  
 
-        public async Task<Evento[]> GetAllEventosAsync(string tema, bool includePalestrantes)
+        public async Task<Evento[]> GetAllEventosAsync(bool includePalestrantes)
         {
             IQueryable<Evento> query = _context.Eventos
                 .Include(e => e.Lote)
@@ -36,7 +37,7 @@ namespace ProEventos.Persistence
             return await query.ToArrayAsync();
         }
 
-        public async Task<Evento> GetAllEventosByIdAsync(int EventoId, bool includePalestrantes)
+        public async Task<Evento> GetEventoByIdAsync(int EventoId, bool includePalestrantes)
         {
             IQueryable<Evento> query = _context.Eventos
                 .Include(e => e.Lote)

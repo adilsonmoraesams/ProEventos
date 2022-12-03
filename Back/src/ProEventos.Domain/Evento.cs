@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProEventos.Domain
 {
     public class Evento
     {
+        [Key]
         public int Id { get; set; }
         public string Local { get; set; }
         public DateTime? DataEvento { get; set; }

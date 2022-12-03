@@ -3,5 +3,5 @@
         "connectionId": "",
         "projectKey": ""
     },
-    "csharp.format.enable": false
+    "csharp.format.enable": true
 }

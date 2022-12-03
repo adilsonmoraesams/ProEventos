@@ -28,7 +28,7 @@ namespace ProEventos.Persistence
 
         public void Update<T>(T entity) where T : class
         {
-            _context.Add(entity);
+            _context.Update(entity);
         }
 
         public void Delete<T>(T entity) where T : class
