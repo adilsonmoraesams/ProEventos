@@ -12,7 +12,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 export class EventosComponent implements OnInit {
   modalRef?: BsModalRef;
-  
+
   public eventos: Evento[] = [];
   public eventosFiltrados: Evento[] = [];
   public larguraImagem: number = 100;
@@ -38,10 +38,10 @@ export class EventosComponent implements OnInit {
   }
 
   constructor(
-    private eventoService: EventoService
-    // private modalService: BsModalService,
+    private eventoService: EventoService,
+    private modalService: BsModalService,
     // private toastr: ToastrService
-    ) { }
+  ) { }
 
   public ngOnInit(): void {
     this.getEventos();
@@ -58,22 +58,22 @@ export class EventosComponent implements OnInit {
         this.eventosFiltrados = this.eventos;
       },
       error: (error: any) => console.log(error),
-      complete: () => {}
+      complete: () => { }
     }
     this.eventoService.getEventos().subscribe(observer);
   }
 
 
   openModal(template: TemplateRef<any>) {
-    // this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
   }
- 
-  confirm(): void { 
+
+  confirm(): void {
     this.modalRef?.hide();
     // this.toastr.success('Registro deletado com sucesso!', 'ATENÇÃO!');
   }
- 
-  decline(): void { 
+
+  decline(): void {
     this.modalRef?.hide();
   }
 
