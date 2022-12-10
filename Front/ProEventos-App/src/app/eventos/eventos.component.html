@@ -16,7 +16,8 @@
         <tr>
             <th>
                 <button type="button" (click)="alterarImagem()" class="btn btn-outline-light btn-sm">
-          {{ !exibirImagem ? 'Exibir' : 'Ocultar'}}</button>
+                    <i class="{{!exibirImagem ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+                    {{ !exibirImagem ? 'Exibir' : 'Ocultar'}}</button>
             </th>
             <th>#</th>
             <th>Tema</th>
@@ -32,15 +33,19 @@
             <td>
                 <img [collapse]="!exibirImagem" [isAnimated]="true" src="{{ evento.imagemURL }}" [style.width.px]="larguraImagem" [style.margimImagem.px]="margemImagem">
             </td>
-            <td>{{ evento.eventoId}}</td>
+            <td>{{ evento.id}}</td>
             <td>{{ evento.tema}}</td>
             <td>{{ evento.local}}</td>
-            <td>{{ evento.dataEvento}}</td>
+            <td>{{ evento.dataEvento | DateFormatPipe}}</td>
             <td>{{ evento.qtdPessoas}}</td>
-            <td>{{ evento.lote}}</td>
+            <td>{{ evento.lote[0].nome }}</td>
             <td>
-                <button type="button" class="btn btn-primary btn-sm m-2">Small button</button>
-                <button type="button" class="btn btn-danger btn-sm">Small button</button>
+                <button type="button" class="btn btn-primary btn-sm m-2" tooltip="Editar">
+                    <i class="fa fa-edit"></i> Editar
+                </button>
+                <button type="button" class="btn btn-danger btn-sm" tooltip="Excluir">
+                <i class="fa fa-trash"></i> Excluir
+                </button>
 
             </td>
         </tr>
@@ -53,3 +58,11 @@
         </tr>
     </tfoot>
 </table>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Tem certza que deseja deletar este evento?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+    </div>
+</ng-template>
